@@ -86,7 +86,12 @@ public class ServletHandlerInterceptor extends HandlerInterceptorAdapter {
         final String spanName = getSpanName(request.getHeader(BraveHttpHeaders.SpanName.getName()), request);
 
         if (traceId.isPresent() && spanId.isPresent()) {
-            final Optional<Long> parentSpanId = fromNullable(request.getHeader(BraveHttpHeaders.ParentSpanId.getName())).transform(TO_HEX);
+
+          Optional<Long> parentSpanId = fromNullable(request.getHeader(BraveHttpHeaders.ParentSpanId.getName())).transform(TO_HEX);
+
+          if (!parentSpanId.isPresent())
+            parentSpanId = fromNullable(0L);
+
             serverTracer.setStateCurrentTrace(traceId.get(), spanId.get(), parentSpanId.get(), spanName);
         } else {
             serverTracer.setStateUnknown(spanName);
