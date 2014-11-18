@@ -274,4 +274,23 @@
             </build>
         </profile>
     </profiles>
+
+    <repositories>
+        <repository>
+            <id>com.pressassociation.nexus.releases</id>
+            <name>Maven Central Compatible PA Releases Repository</name>
+            <url>http://nexus.howden.press.net/nexus/content/repositories/releases</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>com.pressassociation.nexus.snapshots</id>
+            <name>Maven Central Compatible PA Snapshots Repository</name>
+            <url>http://nexus.howden.press.net/nexus/content/repositories/releases</url>
+            <snapshots>
+                <enabled>true</enabled>
+            </snapshots>
+        </repository>
+    </repositories>
 </project>
