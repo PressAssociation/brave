@@ -50,7 +50,6 @@ class ServerAndClientSpanStateImpl implements ServerAndClientSpanState {
         } else {
             currentServerSpan.set(span);
         }
-
     }
 
     /**
@@ -62,7 +61,7 @@ class ServerAndClientSpanStateImpl implements ServerAndClientSpanState {
         if (serviceName == null) {
             return endPoint;
         } else {
-            final Endpoint ep = new Endpoint(endPoint);
+            final Endpoint ep = new Endpoint();
             ep.setService_name(serviceName);
             return ep;
         }
