@@ -135,6 +135,10 @@ public class ServletHandlerInterceptorTest {
         request.addHeader(BraveHttpHeaders.TraceId.getName(), Long.toHexString(traceId));
         request.addHeader(BraveHttpHeaders.ParentSpanId.getName(), Long.toHexString(parentSpanId));
 
+        request.addHeader(BraveHttpHeaders.SpanId.getName(), IdConversion.convertToString(spanId));
+        request.addHeader(BraveHttpHeaders.TraceId.getName(), IdConversion.convertToString(traceId));
+        request.addHeader(BraveHttpHeaders.ParentSpanId.getName(), IdConversion.convertToString(parentSpanId));
+
         subject.preHandle(request, new MockHttpServletResponse(), this);
 
         final InOrder order = inOrder(serverTracer);
